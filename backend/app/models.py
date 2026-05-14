@@ -87,7 +87,6 @@ class Transaction(Base):
     account_id: Mapped[int] = mapped_column(ForeignKey("accounts.id", ondelete="CASCADE"), index=True)
     transaction_type: Mapped[TransactionType] = mapped_column(_enum_str(TransactionType), nullable=False)
     amount_cents: Mapped[int] = mapped_column(Integer, nullable=False)
-    # Deposits omit merchant; purchases require a category
     merchant_category: Mapped[MerchantCategory | None] = mapped_column(
         _enum_str(MerchantCategory), nullable=True
     )

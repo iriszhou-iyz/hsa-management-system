@@ -5,7 +5,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from sqlalchemy import text
 
 from app.database import Base, engine
-from app import models  # noqa: F401 — register tables on Base.metadata
+from app import models
 from app.routers import accounts
 
 

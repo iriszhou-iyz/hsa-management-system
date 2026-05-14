@@ -5,7 +5,6 @@ from pathlib import Path
 from sqlalchemy.ext.asyncio import AsyncSession, async_sessionmaker, create_async_engine
 from sqlalchemy.orm import DeclarativeBase
 
-# Keep SQLite outside `app/` so `uvicorn --reload --reload-dir app` does not watch DB churn.
 _backend_dir = Path(__file__).resolve().parent.parent
 _instance_dir = _backend_dir / "instance"
 _instance_dir.mkdir(parents=True, exist_ok=True)

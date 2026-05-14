@@ -46,7 +46,6 @@ async def list_accounts(db: DbSession) -> list[Account]:
 
 @router.post("/", response_model=AccountOut, status_code=status.HTTP_201_CREATED)
 async def create_account(body: AccountCreate, db: DbSession) -> Account:
-    # Emails are unique in the DB; reject duplicates instead of surfacing an integrity error.
     existing = await db.execute(select(Account).where(Account.email == body.email))
     if existing.scalar_one_or_none() is not None:
         raise HTTPException(
@@ -100,7 +99,7 @@ async def issue_card(account_id: int, db: DbSession) -> Card:
     if result.scalar_one_or_none() is None:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Account not found")
 
-    # Virtual card: store only last four digits (no full PAN in this demo).
+    # virtual card: store only last four digits
     last_four = f"{secrets.randbelow(10000):04d}"
     card = Card(account_id=account_id, last_four=last_four, is_active=True)
     db.add(card)
@@ -111,7 +110,6 @@ async def issue_card(account_id: int, db: DbSession) -> Card:
 
 @router.post("/{account_id}/purchases", response_model=TransactionOut)
 async def simulate_purchase(account_id: int, body: PurchaseCreate, db: DbSession) -> Transaction:
-    # Eligibility is decided before the DB transaction; balance is checked inside with the row locked.
     qualified = body.merchant_category in QUALIFIED_CATEGORIES
 
     async with db.begin():
@@ -123,7 +121,7 @@ async def simulate_purchase(account_id: int, body: PurchaseCreate, db: DbSession
             raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Account not found")
 
         if not qualified:
-            # Declined purchases still create a row for an audit trail; balance unchanged.
+            # declined purchases still create a row for an audit trail but balance remains unchanged
             tx = Transaction(
                 account_id=account.id,
                 transaction_type=TransactionType.PURCHASE,
