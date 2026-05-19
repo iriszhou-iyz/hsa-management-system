@@ -2,6 +2,8 @@
 
 A full-stack HSA account simulation platform that lets users create accounts, deposit funds, issue virtual debit cards, and simulate qualified or declined medical transactions.
 
+---
+
 ## Features
 
 - Create HSA accounts with username and email
@@ -12,12 +14,18 @@ A full-stack HSA account simulation platform that lets users create accounts, de
 - Decline invalid or overdrafted transactions
 - View transaction history
 
+---
+
 ## Documentation
 
 - [Architecture Documentation](./architecture.md)
 - [AI Usage Documentation](./ai-usage.md)
 
+---
+
 ## Setup Instructions
+
+---
 
 ### Get source code
 
@@ -25,6 +33,8 @@ A full-stack HSA account simulation platform that lets users create accounts, de
 git clone https://github.com/iriszhou-iyz/hsa-management-system.git
 cd hsa-management-system
 ```
+
+---
 
 ### Backend
 
@@ -47,6 +57,8 @@ API endpoints:
 ```text
 http://127.0.0.1:8000/docs
 ```
+
+---
 
 ### Frontend
 

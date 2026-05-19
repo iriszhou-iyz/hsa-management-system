@@ -8,11 +8,15 @@ This project is a full stack Health Savings Account simulation platform that all
 - Issue virtual debit cards
 - Simulate purchases and transaction processing
 
+---
+
 ## High-Level System Architecture
 The application consists of the following components:
 - A frontend web UI for interacting with the system
 - A FastAPI backend that exposes REST API endpoints
 - A relational database accessed through SQLAlchemy ORM
+
+---
 
 ## Request Flow
 
@@ -39,6 +43,7 @@ Backend validates whether the category is a qualified medical expense, locking t
 If funds are sufficient, the purchase is approved. A transaction record is created and displayed, and the balance is reduced.
 Otherwise, transaction is declined.
 
+---
 
 ## Data Model
 
@@ -51,6 +56,7 @@ Stores virtual debit card information. Fields are: id, account_id, last four dig
 ### Transaction
 Represents deposits and purchases. Fields are: id, account_id, transaction_type [deposit, purchase], amount of the transaction in cents, merchant_category, status, decline_reason, and when it was created.
 
+---
 
 ## Concurrency Handling
 
@@ -77,6 +83,7 @@ and the account row is locked using:
 
 This locking of the database row ensures that only one transaction can modify the account balance at a time, preventing concurrency issues and negative balances.
 
+---
 
 ## Design Tradeoffs
 
