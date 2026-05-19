@@ -9,7 +9,6 @@ The primary AI tool used during development was Cursor as a development assistan
 
 All final implementation decisions and code verification were done manually. Most code was written manually.
 
----
 
 ## Areas Where AI Helped
 
@@ -25,7 +24,6 @@ AI was used to discuss safe handling of concurrent transactions and database loc
 
 Cursor was used to help refine frontend layout and usability. It assisted with providing code for adjusting button placement, improving spacing, and section organization to make the main user workflows easier to navigate.
 
----
 
 ## Example AI Workflows
 
@@ -42,7 +40,6 @@ AI suggested separating the backend into distinct files based on responsibility 
 
 Cursor helped clarify that SQLAlchemy models and Pydantic schemas should stay separate. This made the code easier to debug, maintain, and add to because database structure, API validation, and route logic each had a clear place.
 
----
 
 ### Example 2: Understanding `SELECT FOR UPDATE`
 
@@ -50,7 +47,6 @@ Prompt: What is the atomic lock equivalent in Python? What does SELECT FOR UPDAT
 
 Cursor generated code that integrated SELECT FOR UPDATE, and it explained how row-level locking works during database transactions. This improved my understanding of safe concurrency handling and helped guide the final implementation.
 
----
 
 ## Example of Incorrect or Incomplete AI Output
 
@@ -64,7 +60,6 @@ To address this, I updated the implementation to use row-level locking with:
 
 This ensured that only one transaction can modify a specific account balance at a time and prevented simultaneous purchases from overdrafting the account.
 
----
 
 ## Verification Process
 
