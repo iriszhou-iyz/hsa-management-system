@@ -267,11 +267,9 @@ export default function App() {
   return (
     <div className="app">
       <header className="header">
-        <h1>HSA account demo</h1>
+        <h1>Health Savings Account Platform</h1>
         <p className="subtitle">
-          Create accounts, deposit funds, issue a virtual card, and simulate purchases. Run the
-          FastAPI backend on port <code>8000</code> with <code>npm run dev</code> here (Vite proxies{' '}
-          <code>/api</code>).
+          Welcome to the HSA Platform! Here, you can create accounts, deposit funds, issue a virtual card, and simulate purchases.
         </p>
       </header>
 
@@ -340,7 +338,7 @@ export default function App() {
         <main className="main">
           {selectedId == null || accountDetail == null ? (
             <div className="empty-main">
-              <p>Select an account on the left, or create one to try deposits and purchases.</p>
+              <p>Select an account on the left, or create one to try depositing funds and purchasing items.</p>
             </div>
           ) : (
             <>
@@ -375,7 +373,7 @@ export default function App() {
                 <section className="panel">
                   <h3>Issue virtual card</h3>
                   <p className="muted small">
-                    Issues one card record per click (last four only in this demo).
+                    Issues one card record per click.
                   </p>
                   <button type="button" className="secondary" disabled={busy} onClick={onIssueCard}>
                     Issue card
@@ -442,10 +440,8 @@ export default function App() {
                 <section className="panel panel-wide panel-concurrent">
                   <h3>Concurrent purchase test</h3>
                   <p className="muted small">
-                    Fires <strong>two purchase API calls at the same time</strong> (same account,
-                    qualified category). Example: deposit <code>100.00</code>, leave defaults{' '}
-                    <code>80</code> and <code>50</code> — at most one should approve if the backend
-                    prevents overlapping debits from overspending.
+                    Fires two purchase API calls at the same time to the same account. 
+                    If this would cause overspending, only approve one purchase.
                   </p>
                   <div className="concurrent-row">
                     <label>
