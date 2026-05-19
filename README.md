@@ -12,6 +12,11 @@ A full-stack HSA account simulation platform that lets users create accounts, de
 - Decline invalid or overdrafted transactions
 - View transaction history
 
+## Documentation
+
+- [Architecture Documentation](./architecture.md)
+- [AI Usage Documentation](./ai-usage.md)
+
 ## Setup Instructions
 
 ### Get source code
